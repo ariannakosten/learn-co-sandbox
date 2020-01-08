@@ -1,0 +1,17 @@
+<% if !@categories.empty? %>
+    <label>Or add your link to an existing category:</label><br>
+    <% @categories.each do |category| %>
+      <input type="checkbox" name="link[category_ids][]" id="<%= category.id %>" value="<%= category.id %>"><%= category.name %></input>
+    <% end %><br>
+  <% end %><br>
+  
+    <input type="submit" value="Update">
+</form><br>
+  
+   <% if !@categories.empty? %>
+    <label>Or edit existing categories:</label><br>
+    <% @categories.each do |category| %>
+      <input type="checkbox" name="link[category_ids][]" id="<%= category.id %>" value="<%= category.id %>" <%= 'checked' if @link.categories.include?(category) %>><%= category.name %></input>
+    <% end %><br>
+  <% end %><br>
+  
